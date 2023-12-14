@@ -1,5 +1,7 @@
 
 
+-- nesto sam promjenio
+
 
 -- ovo je komentar
 --create database edunovawp3;
