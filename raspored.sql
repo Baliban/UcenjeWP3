@@ -27,12 +27,12 @@ alter table djelatnici add foreign key (odjel) references odjel(ID);
 alter table slike add foreign key (djelatnik) references djelatnici(ID);
 alter table odjel add foreign key (djelatnici) references djelatnici(ID);
 
-insert into djelatnici (ime,prezime,odjel,slika) values
-('','',1,1),
-('','',1,2),
-('','',1,3),
-('','',2,4),
-('','',2,5);
+insert into djelatnici (ime,prezime,odjel) values
+('','',1),
+('','',1),
+('','',1),
+('','',2),
+('','',2);
 
 insert into odjel (vrsta) values
 ('mesnica'),
