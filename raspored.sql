@@ -40,3 +40,6 @@ insert into odjel (vrsta) values
 ('prijem'),
 ('sala');
 
+insert into slike (djelatnik,redni_br,putanja) values
+('',1,'')
+
