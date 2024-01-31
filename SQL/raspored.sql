@@ -10,7 +10,7 @@ CREATE TABLE djelatnici(
 	ID int not null primary key identity(1,1),
 	ime VARCHAR (50) NOT NULL,
 	prezime VARCHAR (50) NOT NULL,
-	odjel int not null
+	odjel varchar (10) not null
 	);
 
 CREATE TABLE slike(
@@ -20,36 +20,32 @@ CREATE TABLE slike(
 	putanja VARCHAR (50)
 );
 
-CREATE TABLE odjel(
-	ID int not null primary key identity(1,1),
-	vrsta VARCHAR (50)
-);
 
-alter table djelatnici add foreign key (odjel) references odjel(ID);
+
 alter table slike add foreign key (djelatnik) references djelatnici(ID);
 
-insert into odjel (vrsta) values
-('Mesnica'),
-('Delikatesa'),
-('Voditelj'),
-('Sala');
 
 
-insert into djelatnici (ime,prezime,odjel) values
-('Mario','Baliban',1),
-('Durdica','Novakovic',1),
-('Danijela','Brezovac',2),
-('Jelena','Predic',2),
-('Snjezana','Kanski',2),
-('Manuela','Marusic',3),
-('Marijana','Iles',3),
-('Valentina','Ivkovic',3),
-('Snjezana','Polanec',4),
-('Martina','Gomercic',4),
-('Zeljka','Blazevic',4),
-('Romana','Pavlovic',4),
-('Zeljka','Milakovic',4);
 
+insert into djelatnici (ime,prezime,odjel) values 
+('Mario','Baliban','1'),
+('Durdica','Novakovic','1'),
+('Danijela','Brezovac','2'),
+('Jelena','Predic','2'),
+('Snjezana','Kanski','2'),
+('Manuela','Marusic','3'),
+('Marijana','Iles','3'),
+('Valentina','Ivkovic','3'),
+('Snjezana','Polanec','4'),
+('Martina','Gomercic','4'),
+('Zeljka','Blazevic','4'),
+('Romana','Pavlovic','4'),
+('Zeljka','Milakovic','4');
+ 
+update djelatnici set odjel='mesnica' where odjel='1' ;
+update djelatnici set odjel='delikatesa' where odjel='2' ;
+update djelatnici set odjel='voditelj' where odjel='3' ;
+update djelatnici set odjel='sala' where odjel='4' ;
 
 
 --insert into slike (djelatnik,redni_br,putanja) values
@@ -57,55 +53,36 @@ insert into djelatnici (ime,prezime,odjel) values
 
 
 
-CREATE TABLE Raspored (
-		[Datum] DATE ,
-		[Dan] char(10) ,
-		Djelatnik int ,
-		Odjel int )
+CREATE TABLE Raspored (ime varchar(15) ,prezime varchar(15) ,
+		Odjel varchar(15),
+           a1 varchar (10),a2 varchar (10),a3 varchar(10),a4 varchar(10),a5 varchar(10),a6 varchar(10),a7 varchar(10) )
 
-alter table Raspored add foreign key (Djelatnik) references djelatnici(ID);
-alter table Raspored add foreign key (Odjel) references odjel(ID);
+--alter table Raspored add foreign key (Djelatnik) references djelatnici(prezime);
+--alter table Raspored add foreign key (Odjel) references odjel(vrsta);
 
-		SET DATEFIRST 1
+--alter table Raspored 
+EXEC sp_rename 'Raspored.a1' , 'Ponedjeljak' , 'column' ; 
+EXEC sp_rename 'Raspored.a2' , 'Utorak' , 'column' ;
+EXEC sp_rename 'Raspored.a3' , 'Srijeda' , 'column' ;
+EXEC sp_rename 'Raspored.a4' , 'Cetvrtak' , 'column' ;
+EXEC sp_rename 'Raspored.a5' , 'Petak' , 'column' ;
+EXEC sp_rename 'Raspored.a6' , 'Subota' , 'column' ;
+EXEC sp_rename 'Raspored.a7' , 'Nedjelja' , 'column' ;
 
-DECLARE @StartDate AS DATETIME
-DECLARE @EndDate AS DATETIME
-SET @StartDate = CURRENT_TIMESTAMP
-SET @EndDate =  DATEADD(d, 6, @StartDate)
-WHILE @StartDate <= @EndDate
+--a1 to 'Monday',a2='Tuesday',a3='Wednesday',a4='Thursday',a5='Friday',a6='Saturday',a7='Sunday');
+ 
+--SELECT S.ime,S.prezime,P.vrsta from odjel P,djelatnici S INNER JOIN djelatnici  on S.ID=S.ID;
+insert into raspored (ime,prezime,Odjel)select ime,prezime,odjel from djelatnici ;
 
-BEGIN
 
-INSERT INTO Raspored
 
-([Dan],[Datum])
 
-SELECT
 
-CASE DATEPART(DW, @StartDate)
 
-WHEN 1 THEN 'Monday'
-WHEN 2 THEN 'Tuesday'
-WHEN 3 THEN 'Wednesday'
-WHEN 4 THEN 'Thursday'
-WHEN 5 THEN 'Friday'
-WHEN 6 THEN 'Saturday'
-WHEN 7 THEN 'Sunday'
+use master
+drop database Raspored
+drop TABLE Raspored;
 
-END AS DayOfWeek
-
-,@StartDate AS ActualDate
-
-SET @StartDate = DATEADD(DD, 1, @StartDate)
-
-END
-
-GO
-
---use master
---drop database Raspored
---drop TABLE Raspored;
-
---select * from Raspored;
+select * from Raspored;
 
 
