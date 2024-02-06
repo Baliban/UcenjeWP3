@@ -4,7 +4,7 @@ using UcenjeCS;
 
 //E04UvjetnoGrananjeSwitch.Izvedi();
 
-Z03.Izvedi();
+vjezba1.Izvedi();
 
 //E03UvjetnoGrananjeIf.Izvedi();
 
