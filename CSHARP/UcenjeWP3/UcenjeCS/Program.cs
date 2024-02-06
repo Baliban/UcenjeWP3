@@ -2,9 +2,9 @@
 
 using UcenjeCS;
 
-E04UvjetnoGrananjeSwitch.Izvedi();
+//E04UvjetnoGrananjeSwitch.Izvedi();
 
-//Z01.Izvedi();
+Z03.Izvedi();
 
 //E03UvjetnoGrananjeIf.Izvedi();
 

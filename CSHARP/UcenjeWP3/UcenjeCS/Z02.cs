@@ -15,6 +15,17 @@ namespace UcenjeCS
             // Ispisuje veći
             // DZ
 
+            Console.Write("Unesi prvi broj: ");
+            int broj1 = int.Parse(Console.ReadLine());
+
+
+            Console.Write("Unesi drugi broj: ");
+            int broj2 = int.Parse(Console.ReadLine());
+
+             if (broj1 > broj2) Console.WriteLine(broj1);
+             else Console.WriteLine(broj2);
+          
+
         }
     }
 }

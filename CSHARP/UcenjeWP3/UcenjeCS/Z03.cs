@@ -15,6 +15,16 @@ namespace UcenjeCS
             // program ispisuje najmanji
             // DZ
 
+            Console.Write("Unesi prvi broj: ");
+            int broj1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Unesi drugi broj: ");
+            int broj2 = int.Parse(Console.ReadLine());
+
+            Console.Write("Unesi treci broj: ");
+            int broj3 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Najmanji broj je: " + Math.Min(broj1, Math.Min(broj2, broj3)));
 
         }
     }
