@@ -32,11 +32,18 @@ namespace UcenjeCS
             {
                 Console.WriteLine("Ti " + ime + " si zgodan/na");
             }
-            else 
+            else if (tezina > 90.5)
             {
-                Console.WriteLine("Poradi na sebi");
+                Console.WriteLine("U teretanu skinuti koju kilu");
                     }
-
+            else if (visina > 190)
+            {
+                Console.WriteLine("Previsok/a si");
+            }
+            else if (visina < 170)
+            {
+                Console.WriteLine("Prenizak/a si");
+            }
         }
 
 
