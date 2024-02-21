@@ -2,7 +2,17 @@
 
 using UcenjeCS;
 
-Subota1.Izvedi();
+
+//UcenjeCS.E12KlasaObjekt.Program.Izvedi();
+
+//E11Rekurzija.Izvedi();
+
+Z07.Izvedi();
+
+// Kada se metoda poziva na klasi (što je ovdje slučaj) ona je static
+//E10Metode.Izvedi();
+
+//Subota1.Izvedi();
 
 //E09Foreach.Izvedi();
 
