@@ -2,12 +2,15 @@
 
 using UcenjeCS;
 
+// kada vidimo ključnu riječ new poziva se konstruktor
+
+//new UcenjeCS.E13Nasljedivanje.Program(); // pozvao sam konstruktor od Programa u E13...
 
 //UcenjeCS.E12KlasaObjekt.Program.Izvedi();
 
 //E11Rekurzija.Izvedi();
 
-Z07.Izvedi();
+Z04.Izvedi();
 
 // Kada se metoda poziva na klasi (što je ovdje slučaj) ona je static
 //E10Metode.Izvedi();
