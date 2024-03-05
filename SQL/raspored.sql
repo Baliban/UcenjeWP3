@@ -79,10 +79,10 @@ insert into raspored (ime,prezime,Odjel)select ime,prezime,odjel from djelatnici
 
 
 
-use master
-drop database Raspored
-drop TABLE Raspored;
+--use master
+--drop database Raspored
+--drop TABLE Raspored;
 
-select * from Raspored;
+--select * from Raspored;
 
 
