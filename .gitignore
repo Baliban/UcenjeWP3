@@ -12,3 +12,15 @@ SQL/pic/6.jfif
 SQL/pic/7.jfif
 SQL/pic/8.png
 SQL/pic/9.jfif
+CSHARP/UcenjeWP3/EdunovaAPP/bin/Debug/net7.0/EdunovaAPP.dll
+*.dll
+*.json
+*.pdb
+CSHARP/UcenjeWP3/EdunovaAPP/EdunovaAPP.csproj.user
+CSHARP/UcenjeWP3/EdunovaAPP/EdunovaAPP.csproj
+*.cache
+*.props
+*.editorconfig
+CSHARP/UcenjeWP3/UcenjeCS/UcenjeCS.csproj
+CSHARP/UcenjeWP3/UcenjeCS/UcenjeCS.csproj
+CSHARP/UcenjeWP3/UcenjeCS/UcenjeCS.csproj
