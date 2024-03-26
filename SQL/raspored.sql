@@ -66,7 +66,7 @@ insert into slike (djelatnik,redni_br,putanja) values
 
 
 
-CREATE TABLE Raspored (djelatnik int not null,ime varchar(15) ,prezime varchar(15) ,
+CREATE TABLE Raspored (djelatnik int ,ime varchar(15) ,prezime varchar(15) ,
 		Odjel varchar(15),
            Ponedjeljak varchar (10),Utorak varchar (10),Srijeda varchar(10),Cetvrtak varchar(10),Petak varchar(10),Subota varchar(10),Nedjelja varchar(10) )
 
