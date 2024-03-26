@@ -66,7 +66,7 @@ insert into slike (djelatnik,redni_br,putanja) values
 
 
 
-CREATE TABLE Raspored (djelatnik int,ime varchar(15) ,prezime varchar(15) ,
+CREATE TABLE Raspored (djelatnik int not null,ime varchar(15) ,prezime varchar(15) ,
 		Odjel varchar(15),
            Ponedjeljak varchar (10),Utorak varchar (10),Srijeda varchar(10),Cetvrtak varchar(10),Petak varchar(10),Subota varchar(10),Nedjelja varchar(10) )
 
@@ -88,7 +88,7 @@ alter table Raspored add foreign key (djelatnik) references djelatnici(ID);
 --a1 to 'Monday',a2='Tuesday',a3='Wednesday',a4='Thursday',a5='Friday',a6='Saturday',a7='Sunday');
  
 --SELECT S.ime,S.prezime,P.vrsta from odjel P,djelatnici S INNER JOIN djelatnici  on S.ID=S.ID;
-insert into raspored (ime,prezime,Odjel)select ime,prezime,odjel from djelatnici ;
+insert into Raspored (ime,prezime,Odjel)select ime,prezime,odjel from djelatnici ;
 
 
 
@@ -96,7 +96,7 @@ insert into raspored (ime,prezime,Odjel)select ime,prezime,odjel from djelatnici
 
 
 --use master
---drop database Raspored
+--drop database Raspored;
 --drop TABLE Raspored;
 
 --select * from Raspored;
