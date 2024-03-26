@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UcenjeCS", "UcenjeCS\Ucenje
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{BACF20E9-C2F1-435C-9FD7-055D5A2929DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdunovaAPP", "EdunovaAPP\EdunovaAPP.csproj", "{E1B8CEFA-BB10-4801-BC0B-F033D270A5B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BACF20E9-C2F1-435C-9FD7-055D5A2929DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BACF20E9-C2F1-435C-9FD7-055D5A2929DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BACF20E9-C2F1-435C-9FD7-055D5A2929DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B8CEFA-BB10-4801-BC0B-F033D270A5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B8CEFA-BB10-4801-BC0B-F033D270A5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B8CEFA-BB10-4801-BC0B-F033D270A5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B8CEFA-BB10-4801-BC0B-F033D270A5B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
