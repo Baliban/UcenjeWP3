@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom'
 import { RoutesNames } from './constants'
 import Pocetna from './pages/Pocetna'
 import Smjerovi from './pages/smjerovi/Smjerovi'
+import SmjeroviDodaj from './pages/smjerovi/SmjeroviDodaj'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path={RoutesNames.HOME} element={<Pocetna />} />
 
         <Route path={RoutesNames.SMJER_PREGLED} element={<Smjerovi />} />
+        <Route path={RoutesNames.SMJER_NOVI} element={<SmjeroviDodaj />} />
         
       </Routes>
     </>
