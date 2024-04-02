@@ -17,26 +17,22 @@ export default function NavBar(){
                 <Navbar.Brand 
                 className='kursor'
                 onClick={()=>navigate(RoutesNames.HOME)}
-                >Edunova APP</Navbar.Brand>
+                >WEB Aplikacija</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link 
-                    href="https://tjakopec-001-site1.ftempurl.com/swagger/index.html"
-                    target='_blank'>API</Nav.Link>
+                    href="https://mariobaliban3378-001-site1.itempurl.com/swagger/index.html"
+                    target='_blank'>SWAGGER</Nav.Link>
                     
-                    <NavDropdown title="Programi" id="collapsible-nav-dropdown">
+                    <NavDropdown title="Navigacija" id="collapsible-nav-dropdown">
                     <NavDropdown.Item 
-                    onClick={()=>navigate(RoutesNames.SMJER_PREGLED)}
-                    >Smjerovi</NavDropdown.Item>
+                    onClick={()=>navigate(RoutesNames.RASPORED_PREGLED)}
+                    >Raspored</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">
-                       Polaznici
+                       Djelatnici
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Predavači</NavDropdown.Item>
-                
-                    <NavDropdown.Item href="#action/3.4">
-                        Grupe
-                    </NavDropdown.Item>
+                    
                     </NavDropdown>
                 </Nav>
                 

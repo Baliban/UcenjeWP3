@@ -90,6 +90,12 @@ alter table Raspored add foreign key (djelatnik) references djelatnici(ID);
 --SELECT S.ime,S.prezime,P.vrsta from odjel P,djelatnici S INNER JOIN djelatnici  on S.ID=S.ID;
 insert into Raspored (ime,prezime,Odjel)select ime,prezime,odjel from djelatnici ;
 
+alter table Raspored add fondsati int;
+Update Raspored SET fondsati = (Ponedjeljak + Utorak + Srijeda + Cetvrtak + Petak + Subota + Nedjelja);
+
+
+
+
 
 
 
