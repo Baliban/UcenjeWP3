@@ -1,11 +1,10 @@
-import Raspored from "../pages/raspored/Raspored";
-import raspored from "../pages/raspored/Raspored";
+import { useId } from "react";
 import {HttpService} from "./HttpService"
 
-const naziv = '/Raspored'
+const brisidjelatnik = '/Djelatnici'
 
 async function get(){
-    return await HttpService.get(naziv)
+    return await HttpService.get(brisidjelatnik)
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return odgovor.data;
@@ -16,8 +15,8 @@ async function get(){
     })
 }
 
-async function post(Raspored){
-    return await HttpService.post(naziv,Raspored)
+async function post(djelatnici){
+    return await HttpService.post(brisidjelatnik,djelatnici)
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return {greska: false, poruka: odgovor.data};
@@ -29,7 +28,7 @@ async function post(Raspored){
 }
 
 async function _delete(Iddjelatnika){
-    return await HttpService.delete(naziv + '/' +Iddjelatnika)
+    return await HttpService.delete(brisidjelatnik + '/' + Iddjelatnika)
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return {greska: false, poruka: odgovor.data.poruka};

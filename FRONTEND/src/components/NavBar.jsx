@@ -29,7 +29,7 @@ export default function NavBar(){
                     <NavDropdown.Item 
                     onClick={()=>navigate(RoutesNames.RASPORED_PREGLED)}
                     >Raspored</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item onClick={()=>navigate(RoutesNames.DJELATNICI_PREGLED)}>
                        Djelatnici
                     </NavDropdown.Item>
                     
