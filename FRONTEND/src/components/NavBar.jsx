@@ -27,7 +27,7 @@ export default function NavBar(){
                     
                     <NavDropdown title="Navigacija" id="collapsible-nav-dropdown">
                     <NavDropdown.Item 
-                    onClick={()=>navigate(RoutesNames.RASPORED_PREGLED)}
+                    href="#action/3.2"
                     >Raspored</NavDropdown.Item>
                     <NavDropdown.Item onClick={()=>navigate(RoutesNames.DJELATNICI_PREGLED)}>
                        Djelatnici

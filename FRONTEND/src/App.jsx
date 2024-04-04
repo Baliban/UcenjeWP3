@@ -7,10 +7,9 @@ import NavBar from './components/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import { RoutesNames } from './constants'
 import Pocetna from './pages/Pocetna'
-import Raspored from './pages/raspored/Raspored'
-import RasporedDodaj from './pages/raspored/rasporedDodaj'
 import Djelatnici from './pages/djelatnici/djelatnici'
 import DjelatniciDodaj from './pages/djelatnici/djelatniciDodaj'
+import DjelatniciPromjena from './pages/djelatnici/djelatniciPromjeni'
 
 function App() {
 
@@ -20,10 +19,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path={RoutesNames.HOME} element={<Pocetna />} />
-        <Route path={RoutesNames.RASPORED_PREGLED} element={<Raspored />} />
-        <Route path={RoutesNames.RASPORED_NOVI} element={<RasporedDodaj />} />
         <Route path={RoutesNames.DJELATNICI_PREGLED} element={<Djelatnici />} />
         <Route path={RoutesNames.DJELATNICI_NOVI} element={<DjelatniciDodaj />} />
+        <Route path={RoutesNames.DJELATNICI_PROMJENI} element={<DjelatniciPromjena />} />
         
       </Routes>
     </>

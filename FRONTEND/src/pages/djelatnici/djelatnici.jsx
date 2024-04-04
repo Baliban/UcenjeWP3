@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Button, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {RoutesNames} from '../../constants'
 import DjelatniciService from '../../services/DjelatniciService';
-import Raspored from '../raspored/Raspored';
+
 
 
 export default function Djelatnici(){
     const [djelatnici, setdjelatnici] = useState();
+    const navigate = useNavigate;
 
-
-    async function dohvatidjelatnici(){
+    async function dohvatidjelatnike(){
         await DjelatniciService.get()
         .then((odg)=>{
             setdjelatnici(odg);
@@ -22,22 +22,22 @@ export default function Djelatnici(){
     }
 
     useEffect(()=>{
-        dohvatidjelatnici();
+        dohvatidjelatnike();
     },[]);
 
     
-    async function obrisiAsync(Iddjelatnika){
-        const odgovor = await DjelatniciService._delete(djelatnici);
+    async function obrisiAsync(id){
+        const odgovor = await DjelatniciService._delete(id);
         if (odgovor.greska){
             console.log(odgovor.poruka);
             alert('Pogledaj konzolu');
             return;
         }
-        dohvatidjelatnici();
+        dohvatidjelatnike();
     }
 
-    function obrisi(Iddjelatnika){
-        obrisiAsync(Iddjelatnika);
+    function obrisi(ID){
+        obrisiAsync(ID);
     }
 
    
@@ -56,21 +56,21 @@ export default function Djelatnici(){
                         </tr>
                     </thead>
                     <tbody>
-                        {djelatnici && djelatnici.map((Djelatnici,index)=>(
+                        {djelatnici && djelatnici.map((djelatnik,index)=>(
                             <tr key={index}>
-                                <td>{Djelatnici.ime}</td>
-                                <td>{Djelatnici.prezime}</td>
-                                <td>{Djelatnici.odjel}</td>
+                                <td>{djelatnik.ime}</td>
+                                <td>{djelatnik.prezime}</td>
+                                <td>{djelatnik.odjel}</td>
                                                                 <td>
                                     <Button 
-                                    onClick={()=>obrisi(Djelatnici.ID)}
+                                    onClick={()=>obrisi(djelatnik.id)}
                                     variant='danger'
                                     >
                                         Obriši
                                     </Button>
                                         {/* kosi jednostruki navodnici `` su AltGR (desni) + 7 */}
                                     <Button 
-                                    onClick={()=>{navigate(`/djelatnici/${Djelatnici.ID}`)}} 
+                                    onClick={()=>{navigate(`/djelatnici/${djelatnik.id}`)}} 
                                     >
                                         Promjeni
                                     </Button>

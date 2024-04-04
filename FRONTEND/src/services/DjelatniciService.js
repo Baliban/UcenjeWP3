@@ -26,6 +26,17 @@ async function post(djelatnici){
         return {greska: true, poruka: e};
     })
 }
+async function put(id,djelatnik){
+    return await HttpService.put(brisidjelatnik + '/'+id,djelatnik)
+    .then((odgovor)=>{
+        //console.table(odgovor.data);
+        return {greska: false, poruka: odgovor.data};
+    })
+    .catch((e)=>{
+        //console.log(e);
+        return {greska: true, poruka: e};
+    })
+}
 
 async function _delete(Iddjelatnika){
     return await HttpService.delete(brisidjelatnik + '/' + Iddjelatnika)
@@ -38,9 +49,20 @@ async function _delete(Iddjelatnika){
         return {greska: true, poruka: e};
     })
 }
+async function getBySifra(id){
+    return await HttpService.get(brisidjelatnik+'/'+id)
+    .then((o)=>{
+        return {greska: false, poruka: o.data}
+    })
+    .catch((e)=>{
+        return {greska: true, poruka: e}
+    });
+}
 
 export default{
     get,
     post,
-    _delete
+    _delete,
+    put,
+    getBySifra
 }

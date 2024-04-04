@@ -2,7 +2,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../constants";
 import DjelatniciService from "../../services/DjelatniciService";
-import djelatnici from "./djelatnici";
+
 
 
 export default function djelatniciDodaj(){
@@ -18,21 +18,20 @@ export default function djelatniciDodaj(){
         navigate(RoutesNames.DJELATNICI_PREGLED);
     }
 
-    function obradiSubmit(e){ // e predstavlja event
+    function obradiSubmit(e){ 
         e.preventDefault();
-        //alert('Dodajem smjer');
+        
 
         const podaci = new FormData(e.target);
 
         const djelatnici = {
-            odjel: podaci.get('odjel'),  // 'naziv' je name atribut u Form.Control
-            prezime: podaci.get('prezime'), //na backend je int
+            odjel: podaci.get('odjel'),  
+            prezime: podaci.get('prezime'), 
             ime: podaci.get('ime'),
             
         };
 
-        //console.log(smjer);
-        dodaj(djelatnici);
+         dodaj(djelatnici);
 
     }
 
