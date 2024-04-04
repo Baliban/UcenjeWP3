@@ -1,37 +1,38 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../constants";
-import DjelatniciService from "../../services/DjelatniciService";
+import RasporedService from "../../services/RasporedService";
+import Raspored from "./Raspored";
 
 
-
-export default function DjelatniciDodaj(){
+export default function rasporedDodaj(){
     const navigate = useNavigate();
 
-    async function dodaj(djelatnici){
-        const odgovor = await DjelatniciService.post(djelatnici);
+    async function dodaj(rasporedi){
+        const odgovor = await RasporedService.post(rasporedi);
         if (odgovor.greska){
             console.log(odgovor.poruka);
             alert('Pogledaj konzolu');
             return;
         }
-        navigate(RoutesNames.DJELATNICI_PREGLED);
+        navigate(RoutesNames.RASPORED_PREGLED);
     }
 
     function obradiSubmit(e){ 
-        e.preventDefault();
         
 
         const podaci = new FormData(e.target);
 
-        const djelatnici = {
-            odjel: podaci.get('odjel'),  
-            prezime: podaci.get('prezime'), 
-            ime: podaci.get('ime'),
+        const raspored = {
+            djelatnik: podaci.get('djelatnik'),  
+            ponedjeljak: parseInt(podaci.get('ponedjeljak')), 
+            utorak: parseInt(podaci.get('utorak')),
+            srijeda: parseInt(podaci.get('srijeda')),
             
         };
 
-         dodaj(djelatnici);
+        //console.log(smjer);
+        dodaj(raspored);
 
     }
 
@@ -40,19 +41,19 @@ export default function DjelatniciDodaj(){
         <Container>
             <Form onSubmit={obradiSubmit}>
 
-                <Form.Group controlId="odjel">
-                    <Form.Label>odjel</Form.Label>
-                    <Form.Control type="text" name="odjel" required />
+                <Form.Group controlId="ID">
+                    <Form.Label>ID</Form.Label>
+                    <Form.Control type="int" name="ID" required />
                 </Form.Group>
 
-                <Form.Group controlId="ime">
-                    <Form.Label>ime</Form.Label>
-                    <Form.Control type="text" name="ime" />
+                <Form.Group controlId="ponedjeljak">
+                    <Form.Label>ponedjeljak</Form.Label>
+                    <Form.Control type="text" name="ponedjeljak" />
                 </Form.Group>
 
-                <Form.Group controlId="prezime">
-                    <Form.Label>prezime</Form.Label>
-                    <Form.Control type="text" name="prezime" />
+                <Form.Group controlId="utorak">
+                    <Form.Label>utorak</Form.Label>
+                    <Form.Control type="text" name="utorak" />
                 </Form.Group>
 
                
@@ -62,7 +63,7 @@ export default function DjelatniciDodaj(){
                 <hr />
                 <Row>
                     <Col xs={6} sm={6} md={3} lg={6} xl={1} xxl={2}>
-                        <Link className="btn btn-danger siroko" to={RoutesNames.DJELATNICI_PREGLED}>
+                        <Link className="btn btn-danger siroko" to={RoutesNames.RASPOREDI_PREGLED}>
                             Odustani
                         </Link>
                     </Col>

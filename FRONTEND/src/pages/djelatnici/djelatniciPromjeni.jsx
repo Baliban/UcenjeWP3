@@ -10,7 +10,7 @@ export default function DjelatniciPromjena(){
     const [djelatnik, setDjelatnik] = useState({});
 
    async function dohvatiDjelatnik(){
-        const o = await DjelatniciService.getBySifra(routeParams.id);
+        const o = await DjelatniciService.GetBySifra(routeParams.ID);
         if(o.greska){
             console.log(o.poruka);
             alert('pogledaj konzolu');
@@ -20,7 +20,7 @@ export default function DjelatniciPromjena(){
    }
 
    async function promjeni(djelatnik){
-    const odgovor = await DjelatniciService.put(routeParams.id,djelatnik);
+    const odgovor = await DjelatniciService.put(routeParams.ID,djelatnik);
     if (odgovor.greska){
         console.log(odgovor.poruka);
         alert('Pogledaj konzolu');
@@ -45,8 +45,7 @@ export default function DjelatniciPromjena(){
             Odjel: podaci.get('odjel')
             
         };
-        //console.log(routeParams.sifra);
-        //console.log(smjer);
+        
         promjeni(djelatnik);
 
     }

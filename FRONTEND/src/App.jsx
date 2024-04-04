@@ -10,6 +10,8 @@ import Pocetna from './pages/Pocetna'
 import Djelatnici from './pages/djelatnici/djelatnici'
 import DjelatniciDodaj from './pages/djelatnici/djelatniciDodaj'
 import DjelatniciPromjena from './pages/djelatnici/djelatniciPromjeni'
+import Raspored from './pages/raspored/Raspored'
+import RasporedDodaj from './pages/raspored/rasporedDodaj'
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
         <Route path={RoutesNames.DJELATNICI_PREGLED} element={<Djelatnici />} />
         <Route path={RoutesNames.DJELATNICI_NOVI} element={<DjelatniciDodaj />} />
         <Route path={RoutesNames.DJELATNICI_PROMJENI} element={<DjelatniciPromjena />} />
+        <Route path={RoutesNames.RASPOREDI_PREGLED} element={<Raspored />} />
+        <Route path={RoutesNames.RASPOREDI_NOVI} element={<RasporedDodaj />} />
         
       </Routes>
     </>
