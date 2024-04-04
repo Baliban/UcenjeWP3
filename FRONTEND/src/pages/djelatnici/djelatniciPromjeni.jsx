@@ -4,13 +4,13 @@ import { RoutesNames } from "../../constants";
 import DjelatniciService from "../../services/DjelatniciService";
 import { useEffect, useState } from "react";
 
-export default function DjelatniciPromjena(){
+export default function DjelatnikPromjeni(){
     const navigate = useNavigate();
     const routeParams = useParams();
     const [djelatnik, setDjelatnik] = useState({});
 
    async function dohvatiDjelatnik(){
-        const o = await DjelatniciService.GetBySifra(routeParams.ID);
+        const o = await DjelatniciService.GetBySifra(routeParams.id);
         if(o.greska){
             console.log(o.poruka);
             alert('pogledaj konzolu');
@@ -20,7 +20,7 @@ export default function DjelatniciPromjena(){
    }
 
    async function promjeni(djelatnik){
-    const odgovor = await DjelatniciService.put(routeParams.ID,djelatnik);
+    const odgovor = await DjelatniciService.put(routeParams.id,djelatnik);
     if (odgovor.greska){
         console.log(odgovor.poruka);
         alert('Pogledaj konzolu');

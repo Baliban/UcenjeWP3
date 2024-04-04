@@ -8,13 +8,13 @@ import DjelatniciService from '../../services/DjelatniciService';
 
 
 export default function Djelatnici(){
-    const [djelatnici, setdjelatnici] = useState();
-    const navigate = useNavigate;
+    const [djelatnici, setDjelatnici] = useState([]);
+    const navigate = useNavigate();
 
     async function dohvatidjelatnike(){
         await DjelatniciService.get()
         .then((odg)=>{
-            setdjelatnici(odg);
+            setDjelatnici(odg);
         })
         .catch((e)=>{
             console.log(e);
@@ -62,17 +62,18 @@ export default function Djelatnici(){
                                 <td>{djelatnik.prezime}</td>
                                 <td>{djelatnik.odjel}</td>
                                                                 <td>
-                                    <Button 
-                                    onClick={()=>obrisi(djelatnik.id)}
-                                    variant='danger'
-                                    >
-                                        Obriši
-                                    </Button>
-                                        {/* kosi jednostruki navodnici `` su AltGR (desni) + 7 */}
-                                    <Button 
+                                                                          
+                                    <Button variant='primary'
                                     onClick={()=>{navigate(`/djelatnici/${djelatnik.id}`)}} 
                                     >
                                         Promjeni
+                                    </Button>
+                                    {/* kosi jednostruki navodnici `` su AltGR (desni) + 7 */}
+                                    <Button variant='danger'
+                                    onClick={()=>obrisi(djelatnik.id)}
+                                    
+                                    >
+                                        Obriši
                                     </Button>
                                 </td>
                             </tr>
