@@ -26,11 +26,24 @@ async function post(raspored){
     })
 }
 
+async function put(id,raspored){
+    return await HttpService.put(brisidjelatnik + '/'+id,raspored)
+    .then((odgovor)=>{
+        console.table(odgovor.data);
+        return {greska: false, poruka: odgovor.data};
+    })
+    .catch((e)=>{
+        console.log(e);
+        return {greska: true, poruka: e};
+    })
+}
+
 
 
 
 export default{
     get,
-    post
+    post,
+    put
     
 }

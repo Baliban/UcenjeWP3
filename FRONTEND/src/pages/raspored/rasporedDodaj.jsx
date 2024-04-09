@@ -28,6 +28,10 @@ export default function rasporedDodaj(){
             ponedjeljak: parseInt(podaci.get('ponedjeljak')), 
             utorak: parseInt(podaci.get('utorak')),
             srijeda: parseInt(podaci.get('srijeda')),
+            cetvrtak: parseInt(podaci.get('cetvrtak')),
+            pretak: parseInt(podaci.get('petak')),
+            subota: parseInt(podaci.get('subota')),
+            nedjelja: parseInt(podaci.get('nedjelja')),
             
         };
 
@@ -54,6 +58,31 @@ export default function rasporedDodaj(){
                 <Form.Group controlId="utorak">
                     <Form.Label>utorak</Form.Label>
                     <Form.Control type="text" name="utorak" />
+                </Form.Group>
+
+                <Form.Group controlId="srijeda">
+                    <Form.Label>srijeda</Form.Label>
+                    <Form.Control type="text" name="srijeda" />
+                </Form.Group>
+
+                <Form.Group controlId="cetvrtak">
+                    <Form.Label>cetvrtak</Form.Label>
+                    <Form.Control type="text" name="cetvrtak" />
+                </Form.Group>
+
+                <Form.Group controlId="petak">
+                    <Form.Label>petak</Form.Label>
+                    <Form.Control type="text" name="petak" />
+                </Form.Group>
+
+                <Form.Group controlId="subota">
+                    <Form.Label>subota</Form.Label>
+                    <Form.Control type="text" name="subota" />
+                </Form.Group>
+
+                <Form.Group controlId="nedjelja">
+                    <Form.Label>nedjelja</Form.Label>
+                    <Form.Control type="text" name="nedjelja" />
                 </Form.Group>
 
                
