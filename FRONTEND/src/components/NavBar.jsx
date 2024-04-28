@@ -22,7 +22,7 @@ export default function NavBar(){
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link 
-                    href="https://mariobaliban3378-001-site1.itempurl.com/swagger/index.html"
+                    href="http://mrb.tryasp.net/swagger/index.html"
                     target='_blank'>SWAGGER</Nav.Link>
                     
                     <NavDropdown title="Navigacija" id="collapsible-nav-dropdown">

@@ -1,6 +1,6 @@
 import {HttpService} from "./HttpService"
 
-const brisidjelatnik = '/Djelatnici'
+const brisidjelatnik = '/djelatnici'
 
 async function get(){
     return await HttpService.get(brisidjelatnik)

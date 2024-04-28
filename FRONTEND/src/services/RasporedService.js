@@ -1,6 +1,6 @@
 import {HttpService} from "./HttpService"
 
-const naziv = '/Raspored'
+const naziv = '/raspored'
 
 async function get(){
     return await HttpService.get(naziv)
