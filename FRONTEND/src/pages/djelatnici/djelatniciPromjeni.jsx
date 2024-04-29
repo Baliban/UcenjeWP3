@@ -1,53 +1,54 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RoutesNames } from "../../constants";
-import DjelatniciService from "../../services/DjelatniciService";
+import Service from "../../services/DjelatniciService";
 import { useEffect, useState } from "react";
+import Akcije from "../../components/Akcije";
 
-export default function DjelatnikPromjeni(){
+export default function DjelatniciPromjena(){
     const navigate = useNavigate();
     const routeParams = useParams();
     const [djelatnik, setDjelatnik] = useState({});
 
    async function dohvatiDjelatnik(){
-        const o = await DjelatniciService.GetBySifra(routeParams.id);
-        if(o.greska){
-            console.log(o.poruka);
-            alert('pogledaj konzolu');
+        const o = await Service.getBySifra("Djelatnici", routeParams.id);
+        if (!odgovor.ok) {
+            alert(Service.dohvatiPorukeAlert(odgovor.podaci));
+            navigate(RoutesNames.DJELATNICI_PREGLED);
             return;
         }
-        setDjelatnik(o.poruka);
+        setDjelatnik(odgovor.podaci);
    }
 
-   async function promjeni(djelatnik){
-    const odgovor = await DjelatniciService.put(routeParams.id,djelatnik);
-    if (odgovor.greska){
-        console.log(odgovor.poruka);
-        alert('Pogledaj konzolu');
-        return;
-    }
-    navigate(RoutesNames.DJELATNICI_PREGLED);
-}
-
-   useEffect(()=>{
+   useEffect(() => {
     dohvatiDjelatnik();
-   },[]);
+      }, []);
+
+      async function promjeniDjelatnik(djelatnik) {
+        const odgovor = await Service.promjeni(
+          "Djelatnici",
+          routeParams.id,
+          djelatnik
+        );
+        if (odgovor.ok) {
+          navigate(RoutesNames.KORISNIK_PREGLED);
+          return;
+        }
+        alert(Service.dohvatiPorukeAlert(odgovor.podaci));
+      }
 
     function obradiSubmit(e){ 
         e.preventDefault();
         
 
         const podaci = new FormData(e.target);
-
-        const djelatnik = {
+        promjeniDjelatnik({
+        
             Ime: podaci.get('ime'),
             Prezime: podaci.get('prezime'),
             Odjel: podaci.get('odjel')
             
-        };
-        
-        promjeni(djelatnik);
-
+        });
     }
 
     return (

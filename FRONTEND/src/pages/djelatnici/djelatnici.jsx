@@ -19,8 +19,8 @@ export default function Djelatnici() {
     setDjelatnici(odgovor.podaci);
   }
 
-  async function obrisi(sifra) {
-    const odgovor = await Service.obrisi("Djelatnici", sifra);
+  async function obrisi(id) {
+    const odgovor = await Service.obrisi("Djelatnici", id);
     alert(Service.dohvatiPorukeAlert(odgovor.podaci));
     if (odgovor.ok) {
       dohvatiDjelatnike();
@@ -58,7 +58,7 @@ export default function Djelatnici() {
                   <Button
                     variant="primary"
                     onClick={() => {
-                      navigate(`/djelatnik/${djelatnik.id}`);
+                      navigate(`/Djelatnici/${djelatnik.id}`);
                     }}
                   >
                     <FaEdit size={25} />
