@@ -1,86 +1,77 @@
-import { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import { Button, Table } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import {RoutesNames} from '../../constants'
-import DjelatniciService from '../../services/DjelatniciService';
+import { useEffect, useState } from "react";
+import { Button, Container, Table } from "react-bootstrap";
+import Service from "../../services/DjelatniciService";
+import { IoIosAdd } from "react-icons/io";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { RoutesNames } from "../../constants";
 
+export default function Djelatnici() {
+  const [djelatnici, setDjelatnici] = useState([]);
+  const navigate = useNavigate();
 
-
-export default function Djelatnici(){
-    const [djelatnici, setDjelatnici] = useState([]);
-    const navigate = useNavigate();
-
-    async function dohvatidjelatnike(){
-        await DjelatniciService.get()
-        .then((odg)=>{
-            setDjelatnici(odg);
-        })
-        .catch((e)=>{
-            console.log(e);
-        });
+  async function dohvatiDjelatnike() {
+    const odgovor = await Service.get("Djelatnici");
+    if (!odgovor.ok) {
+      alert(Service.dohvatiPorukeAlert(odgovor.podaci));
+      return;
     }
+    setDjelatnici(odgovor.podaci);
+  }
 
-    useEffect(()=>{
-        dohvatidjelatnike();
-    },[]);
-
+  async function obrisi(sifra) {
+    const odgovor = await Service.obrisi("Djelatnici", sifra);
+    alert(Service.dohvatiPorukeAlert(odgovor.podaci));
+    if (odgovor.ok) {
+      dohvatiDjelatnike();
+    }
+  }
+  useEffect(() => {
+    dohvatiDjelatnike();
     
-    async function obrisiAsync(id){
-        const odgovor = await DjelatniciService._delete(id);
-        if (odgovor.greska){
-            console.log(odgovor.poruka);
-            alert('Pogledaj konzolu');
-            return;
-        }
-        dohvatidjelatnike();
-    }
+  }, []);
 
-    function obrisi(ID){
-        obrisiAsync(ID);
-    }
+  return (
+    <Container>
+      <Link to={RoutesNames.DJELATNICI_NOVI} className="btn btn-success siroko">
+        <IoIosAdd size={25} /> Dodaj
+      </Link>
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Odjel</th>
 
-   
+            <th>Akcija</th>
+          </tr>
+        </thead>
+        <tbody>
+          {djelatnici &&
+            djelatnici.map((djelatnik, index) => (
+              <tr key={index}>
+                <td>{djelatnik.ime}</td>
+                <td>{djelatnik.prezime}</td>
+                <td>{djelatnik.odjel}</td>
 
-    return(
-        <>
-           <Container>
-           <Link to={RoutesNames.DJELATNICI_NOVI}> Dodaj novog djelatnika</Link>
-            <Table striped bordered hover responsive>
-                    <thead>
-                        <tr>
-                            <th>Ime</th>
-                            <th>Prezime</th>
-                            <th>Odjel</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {djelatnici && djelatnici.map((djelatnik,index)=>(
-                            <tr key={index}>
-                                <td>{djelatnik.ime}</td>
-                                <td>{djelatnik.prezime}</td>
-                                <td>{djelatnik.odjel}</td>
-                                                                <td>
-                                                                          
-                                    <Button variant='primary'
-                                    onClick={()=>{navigate(`/djelatnici/${djelatnik.id}`)}} 
-                                    >
-                                        Promjeni
-                                    </Button>
-                                    {/* kosi jednostruki navodnici `` su AltGR (desni) + 7 */}
-                                    <Button variant='danger'
-                                    onClick={()=>obrisi(djelatnik.id)}
-                                    
-                                    >
-                                        Obriši
-                                    </Button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-            </Table>
-           </Container>
-        </>
-    );
+                <td className="sredina">
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      navigate(`/djelatnik/${djelatnik.id}`);
+                    }}
+                  >
+                    <FaEdit size={25} />
+                  </Button>
+                  &nbsp;&nbsp;&nbsp;
+                  <Button variant="danger" onClick={() => obrisi(djelatnik.id)}>
+                    <FaTrash size={25} />
+                  </Button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
 }

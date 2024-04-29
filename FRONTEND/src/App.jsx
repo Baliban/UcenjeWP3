@@ -9,13 +9,19 @@ import DjelatniciDodaj from './pages/djelatnici/DjelatniciDodaj'
 import DjelatniciPromjena from './pages/djelatnici/DjelatniciPromjeni'
 import Raspored from './pages/raspored/Raspored'
 import RasporedDodaj from './pages/raspored/rasporedDodaj'
+import ErrorModal from './components/ErrorModal';
+import useError from "./hooks/useError"
+import LoadingSpinner from './components/LoadingSpinner'
 
 
 function App() {
 
+  const { errors, prikaziErrorModal, sakrijError } = useError();
 
   return (
     <>
+    <ErrorModal show={prikaziErrorModal} errors={errors} onHide={sakrijError} />
+      <LoadingSpinner />
       <NavBar />
       <Routes>
         <Route path={RoutesNames.HOME} element={<Pocetna />} />

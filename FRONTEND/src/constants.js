@@ -10,3 +10,8 @@ export const RoutesNames = {
     
     
 };
+
+export const App = {
+    URL: 'http://mrb.tryasp.net',
+    DEV: false,
+};
