@@ -6,8 +6,8 @@ export const RoutesNames = {
     DJELATNICI_NOVI: '/djelatnici/dodaj',
     DJELATNICI_PROMJENI: '/djelatnici/:id',
     RASPOREDI_PREGLED: '/raspored',
-    RASPOREDI_NOVI: '/raspored/dodaj'
-    
+    RASPOREDI_NOVI: '/raspored/dodaj',
+    RASPOREDI_PROMJENI: '/raspored/:id'
     
 };
 
