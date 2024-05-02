@@ -2,9 +2,9 @@ use master
 go
 drop database if exists Raspored;
 go
-create database Raspored;
+create database test;
 go
-use Raspored;
+use test;
 
 CREATE TABLE djelatnici(
 	ID int not null primary key identity(1,1),
@@ -46,7 +46,7 @@ update djelatnici set odjel='delikatesa' where odjel='2' ;
 update djelatnici set odjel='voditelj' where odjel='3' ;
 update djelatnici set odjel='sala' where odjel='4' ;
 
---ALTER TABLE slike COLUMN putanja varchar(255);
+ALTER TABLE slike COLUMN putanja varchar(255);
 
 
 insert into slike (djelatnik,redni_br,putanja) values
@@ -95,10 +95,13 @@ Update Raspored SET fondsati = (Ponedjeljak + Utorak + Srijeda + Cetvrtak + Peta
 
 
 
+SET DATEFIRST 1 -- ( Ponedjeljak )
+CREATE TABLE proba 
+           (
+           ponedjeljak date FORMAT (getdate(), 'dddd, MMMM, yyyy') as date ;
 
 
-
-
+		   select * from Raspored;
 
 
 --use master
@@ -106,5 +109,61 @@ Update Raspored SET fondsati = (Ponedjeljak + Utorak + Srijeda + Cetvrtak + Peta
 --drop TABLE Raspored;
 
 --select * from Raspored;
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+GO
+CREATE TABLE dbo.tjedan2
+	(
+	ponedjeljak datetime NULL,
+	ut datetime2 NULL,
+	sr datetime2 NULL,
+	ce datetime2 NULL,
+	pe varchar (10) NULL,
+	su int NULL,
+	nedjelja datetime NULL,
+	fondsati int NULL
+	)  ON [PRIMARY]
+GO
+ALTER TABLE dbo.tjedan2 SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT
 
+select * from tjedan;
+SET DATEFIRST 3
 
+SELECT FORMAT (getdate(), 'dddd, MMMM, yyyy') as date
+
+DATEPART(dw, '2024-04-21')
+SELECT DAYOFWEEK(NOW());
+
+SELECT DATEPART(dw, '2017/08/25') AS DatePartInt;
+SELECT DATEPART(month, '2017/08/25') AS DatePartInt;
+SELECT DAY('2017/08/25') AS DayOfMonth;
+SELECT DATENAME(dw, '2017/08/25') AS DatePartString;
+
+SELECT DATENAME(year, '12:10:30.123')  
+    ,DATENAME(month, '12:10:30.123')  
+    ,DATENAME(day, '12:10:30.123')  
+    ,DATENAME(dayofyear, '12:10:30.123')  
+    ,DATENAME(weekday, '12:10:30.123'); 
+
+select DATENAME(weekday, '12:10:30.123'); 
+update tjedan2 set pe = DATENAME(weekday, '2024/05/25') ;
+update tjedan2 set pe = DATENAME(weekday, '2024/05/25') ;
+
+select * from tjedan2;
+
+SELECT DATEPART(year, GETDATE()) AS CurrentYear,
+       DATEPART(month, GETDATE()) AS CurrentMonth,
+       DATEPART(day, GETDATE()) AS CurrentDay;
+
+SELECT FORMAT(sr, 'd', 'en-US') AS 'Datetime2'
+FROM tjedan2;
